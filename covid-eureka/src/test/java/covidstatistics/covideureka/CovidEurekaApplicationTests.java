@@ -1,10 +1,10 @@
-package covidstatistics.covideurekaServer;
+package covidstatistics.covideureka;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CovidEurekaServerApplicationTests {
+class CovidEurekaApplicationTests {
 
 	@Test
 	void contextLoads() {
