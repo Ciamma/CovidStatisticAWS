@@ -31,7 +31,7 @@
 - un utente malato quando si definisce guarito(cancella record da query malati) [trigger]
 - ad un certo orario vengono aggiornati i guaritit e i malati(cancella record da query guariti) [trigger]
   
-        Sick User
+        sickUser
     | id  | time  |                         
     |-----|-------|                         
     | 001 | 20/05/2022-19:56 |              
@@ -52,3 +52,12 @@
 
 ## Microservizio
 ---
+
+Il microservizio avrà le seguenti chiammate:
+
+    - getNumeroMalati(): ritorna il numero dei malati registrati
+    - getNumeroGuartiti(): ritorna il numero dei malati registrati
+    - setMalato(id:String, time:datetime)(): crea un record nella query sickUser con i dati in input [post]
+    - setGuarito(id:String, time:datetime)(): crea un record nella query curedUser con i dati in input. Successivamente elimina il record dell'utente malato [post]
+    - getValoriGiornalieri(): effettuato ad una certa ora del giorno, registra in counters le chiamate i nuovi malati e guariti del giorno, successsivamente elimina i record di tutti i guariti giornalieri
+ 
