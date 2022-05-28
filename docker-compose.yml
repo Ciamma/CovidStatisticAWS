@@ -40,7 +40,7 @@ services:
         mode: host
     environment:
       - PGADMIN_CONFIG_SERVER_MODE=True
-      - PGADMIN_DEFAULT_EMAIL=nicola@xantrix.it
+      - PGADMIN_DEFAULT_EMAIL=caparvi.2014215@studenti.uniroma1.it
       - PGADMIN_DEFAULT_PASSWORD=123_Stella
 
 
