@@ -8,7 +8,7 @@
  classDiagram
     counter <|-- User
     %% id stringa di 15 caratteri 
-    class kUser{
+    class User{
         +String id
         +status bool
         +timestamp time
