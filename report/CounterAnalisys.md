@@ -6,15 +6,11 @@
 
 ```mermaid 
  classDiagram
-    counter <|-- sickUser
-    counter <|-- curedUser
+    counter <|-- User
     %% id stringa di 15 caratteri 
-    class sickUser{
+    class kUser{
         +String id
-        +timestamp time
-    }
-    class curedUser{
-        +String id
+        +status bool
         +timestamp time
     }
     class counter{
@@ -28,18 +24,13 @@
 
 - un utente malato non può ricliccare su malato
 - un utente non malato non influisce sul conteggio dei guariti
-- un utente malato quando si definisce guarito(cancella record da query malati) [trigger]
+- un malato dopo un mese viene definito guarito automaticamente
 - ad un certo orario vengono aggiornati i guaritit e i malati(cancella record da query guariti) [trigger]
   
-        sickUser
-    | id  | time  |                         
-    |-----|-------|                         
-    | 001 | 20/05/2022-19:56 |              
-
-        curedUser
-    | id  | time  |
-    |-----|-------|
-    | 001 | 24/05/2022 10:20 |
+        User
+    | id  | time  | status |                        
+    |-----|-------|--------|                
+    | 001 | 20/05/2022-19:56 | 0|              
 
         counter
     | day | nMalati | nGuariti |
@@ -47,8 +38,8 @@
     | 24/05/2022 | 50 | 75 |
     
     - malati totali: ∑(i=0)(n) nMalati => sum(nMalati)
-    - malati del giorno: nMalati  
-    - attualmente malati: #(sickUser)  => count(sickUser)
+    - malati del giorno: nMalati
+    - attualmente malati: #(sickUser)  => count(query status == 1)
 
 ## Microservizio
 ---
