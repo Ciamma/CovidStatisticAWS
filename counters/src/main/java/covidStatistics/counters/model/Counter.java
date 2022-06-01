@@ -1,17 +1,30 @@
 package covidStatistics.counters.model;
 
+import java.time.LocalDate;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
+
 public class Counter {
-    String day;
+
+    @Id
+    private LocalDate day;
+
+    @NotNull
+    @PositiveOrZero
     Integer nMalati;
+
+    @NotNull
+    @PositiveOrZero
     Integer nGuariti;
 
-    public Counter(String day, Integer nMalati, Integer nGuariti) {
+    public Counter(LocalDate day, Integer nMalati, Integer nGuariti) {
         this.day = day;
         this.nMalati = nMalati;
         this.nGuariti = nGuariti;
     }
 
-    public String getDay() {
+    public LocalDate getDay() {
         return day;
     }
 

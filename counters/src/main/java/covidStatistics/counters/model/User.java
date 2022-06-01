@@ -1,11 +1,23 @@
 package covidStatistics.counters.model;
 
-public class User {
-    String id;
-    boolean status;
-    String timestamp;
+import java.time.LocalDateTime;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
-    public User(String id, boolean status, String timestamp) {
+public class User {
+
+    @Id
+    private String id;
+
+    @NotNull
+    private boolean status;
+
+    @PastOrPresent
+    @NotNull
+    private LocalDateTime timestamp;
+
+    public User(String id, boolean status, LocalDateTime timestamp) {
         this.id = id;
         this.status = status;
         this.timestamp = timestamp;
@@ -23,11 +35,11 @@ public class User {
         return status;
     }
 
-    public String getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 }
