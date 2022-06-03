@@ -20,7 +20,7 @@ eureka:
   instance:
     hostname: localhost
     #Specifica se la registrazione avviene tramite ip
-    preferIpAddress: false
+    preferIpAddress: true
 # ==============================================================
 # = Impostazione Server
 # ==============================================================      
@@ -33,6 +33,8 @@ eureka:
     evictionIntervalTimerInMs: 30000
     #Tempo di attesa (in secondi) prima di accettare richieste
     waitTimeInMsWhenSyncEmpty: 5
+    #Timeout di connessione al peer
+    peer-node-read-timeout-ms: 500
 # ==============================================================
 # = Impostazione Client
 # ==============================================================  
