@@ -21,6 +21,7 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.server.ResponseStatusException;
 import covidStatistics.counters.model.User;
 import covidStatistics.counters.service.CounterService;
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("api/covidcounters")

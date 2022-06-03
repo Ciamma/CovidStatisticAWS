@@ -2,9 +2,12 @@ package covidStatistics.counters.model;
 
 import java.time.LocalDate;
 import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
+@Entity
+@Table(name = "NOME TABELLA")
 public class Counter {
 
     @Id

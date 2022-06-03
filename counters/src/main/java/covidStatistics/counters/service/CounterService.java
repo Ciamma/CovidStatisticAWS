@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import covidStatistics.counters.model.User;
 import covidStatistics.counters.repository.UsersRepository;
 
+
+
 @Service
 public class CounterService {
 
