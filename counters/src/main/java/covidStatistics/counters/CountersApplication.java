@@ -6,6 +6,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
+@EnableScheduling
 //@EneableDiscoveryClient Valido per Discovery CLient diversi da Eureka
 public class CountersApplication {
 

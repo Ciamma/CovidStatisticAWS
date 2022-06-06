@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
 @Entity
-@Table(name = "NOME TABELLA")
+@Table(name = "counter")
 public class Counter {
 
     @Id
@@ -46,6 +46,4 @@ public class Counter {
     public Integer getNGuariti() {
         return nGuariti;
     }
-
-
 }
