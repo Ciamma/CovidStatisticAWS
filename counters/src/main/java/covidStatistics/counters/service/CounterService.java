@@ -1,11 +1,15 @@
 package covidStatistics.counters.service;
 
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import covidStatistics.counters.model.Counter;
 import covidStatistics.counters.model.User;
 import covidStatistics.counters.repository.UsersRepository;
+import covidStatistics.counters.repository.CounterRepository;
 
 
 
@@ -19,11 +23,11 @@ public class CounterService {
     private CounterRepository Crepo;
 
     public Integer getNmalati() {
-        return repo.findByStatus(true).size();
+        return Urepo.findByStatus(true).size();
     }
 
-    public Integer getNmalati() {
-        return repo.findByStatus(false).size();
+    public Integer getNguariti() {
+        return Urepo.findByStatus(false).size();
     }
 
     public void deleteGuariti(){
@@ -34,20 +38,20 @@ public class CounterService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime date = LocalDateTime.parse(time, formatter);
         User u = new User(id, true, date);
-        return repo.save(u);
+        return Urepo.save(u);
     }
 
     public User setGuarito(String id, String time){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime date = LocalDateTime.parse(time, formatter);
         User u = new User(id, false, date);
-        return repo.save(u);
+        return Urepo.save(u);
     }
 
     public void CounterDaily(){
         LocalDate today = LocalDate.now();
         Counter c = new Counter(today, getNmalati(), getNguariti());
-        deleteGuariti();
         Crepo.save(c);
+        deleteGuariti();
     }
 }

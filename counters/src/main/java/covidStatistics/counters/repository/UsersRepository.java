@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import covidStatistics.counters.model.User;
 
-public interface UsersRepository implements JpaRepository<User, String> {
+public interface UsersRepository extends JpaRepository<User, String> {
 
     List<User> findAll();
 
@@ -15,5 +15,7 @@ public interface UsersRepository implements JpaRepository<User, String> {
     List<User> findByStatus(boolean status);
 
     List<User> findByStatusAndDate(boolean status, LocalDateTime date);
+
+    void deleteByStatus(Boolean status);
 
 }

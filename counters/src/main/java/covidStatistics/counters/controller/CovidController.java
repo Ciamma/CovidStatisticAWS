@@ -4,6 +4,7 @@ import java.net.ConnectException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -73,6 +74,6 @@ public class CovidController {
 
     @Scheduled(initialDelay = 64800000, fixedRate = 86400000)    // il primo delay è di 18 ore, i prosimi sono di 24 ore.
     public void CounterDaily() {
-        return service.CounterDaily();
+        service.CounterDaily();
     }   
 }
