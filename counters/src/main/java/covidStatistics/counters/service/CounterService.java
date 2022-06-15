@@ -23,7 +23,7 @@ public class CounterService {
     private CounterRepository Crepo;
 
     public Integer getNmalati() {
-        return Urepo.findByStatus(true).size();
+        return Urepo.findAll().size();
     }
 
     public Integer getNguariti() {

@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
 @Entity
-@Table(name = "counter")
+@Table(name = "counters")
 public class Counter {
 
     @Id

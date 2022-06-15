@@ -4,6 +4,7 @@ import java.net.ConnectException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,8 @@ import covidStatistics.counters.service.CounterService;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("api/covidcounters")
+@RequestMapping("covidcounters")
+@EnableScheduling
 public class CovidController {
 
     // Error Handling

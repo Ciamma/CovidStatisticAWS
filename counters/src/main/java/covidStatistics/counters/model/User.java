@@ -8,7 +8,7 @@ import javax.validation.constraints.PastOrPresent;
 
 
 @Entity
-@Table(name = "nome tabella")
+@Table(name = "UTENTI")
 public class User {
 
     @Id

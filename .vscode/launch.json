@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CountersApplication<counters>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "covidStatistics.counters.CountersApplication",
+            "projectName": "counters",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
