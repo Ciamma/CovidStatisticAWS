@@ -8,7 +8,7 @@ import javax.validation.constraints.PastOrPresent;
 
 
 @Entity
-@Table(name = "utenti")
+@Table(name = "UTENTI")
 public class User {
 
     @Id
@@ -20,6 +20,8 @@ public class User {
     @PastOrPresent
     @NotNull
     private LocalDateTime timestamp;
+
+    public User() {}
 
     public User(String id, boolean status, LocalDateTime timestamp) {
         this.id = id;

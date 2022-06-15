@@ -64,18 +64,20 @@ public class CovidController {
         return service.getNguariti();
     }
 
-    @PostMapping("/malati/{id}{time}")
-    public User setMalato(@PathVariable String id, @PathVariable String time) {
-        return service.setMalato(id, time);
+    @PostMapping("/malato/{id}")
+    public User setMalato(@PathVariable String id) {
+        return service.setMalato(id);
     }
 
-    @PostMapping("/guariti/{id}{time}")
-    public User setGuarito(@PathVariable String id, @PathVariable String time) {
-        return service.setGuarito(id, time);
+    @PostMapping("/guarito/{id}")
+    public User setGuarito(@PathVariable String id) {
+        return service.setGuarito(id);
     }
 
-    @Scheduled(initialDelay = 64800000, fixedRate = 86400000)    // il primo delay è di 18 ore, i prosimi sono di 24 ore.
+    // @Scheduled(initialDelay = 64800000, fixedRate = 86400000) // il primo delay è di 18 ore, i
+    // prosimi sono di 24 ore.
+    @Scheduled(initialDelay = 20, fixedRate = 86400000)
     public void CounterDaily() {
         service.CounterDaily();
-    }   
+    }
 }

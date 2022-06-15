@@ -22,11 +22,11 @@ public class CounterService {
     @Autowired
     private CounterRepository Crepo;
 
-    public Integer getNmalati() {
-        return Urepo.findAll().size();
+    public Integer getNmalati() { // funzia
+        return Urepo.findByStatus(true).size();
     }
 
-    public Integer getNguariti() {
+    public Integer getNguariti() { // funzia
         return Urepo.findByStatus(false).size();
     }
 
@@ -34,21 +34,19 @@ public class CounterService {
         Urepo.deleteByStatus(false);
     }
 
-    public User setMalato(String id, String time) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        LocalDateTime date = LocalDateTime.parse(time, formatter);
+    public User setMalato(String id) { // funzia
+        LocalDateTime date = LocalDateTime.now();
         User u = new User(id, true, date);
         return Urepo.save(u);
     }
 
-    public User setGuarito(String id, String time){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        LocalDateTime date = LocalDateTime.parse(time, formatter);
+    public User setGuarito(String id) { // funzia
+        LocalDateTime date = LocalDateTime.now();
         User u = new User(id, false, date);
         return Urepo.save(u);
     }
 
-    public void CounterDaily(){
+    public void CounterDaily() {
         LocalDate today = LocalDate.now();
         Counter c = new Counter(today, getNmalati(), getNguariti());
         Crepo.save(c);
