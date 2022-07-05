@@ -3,6 +3,7 @@ package covidStatistics.counters.repository;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import covidStatistics.counters.model.User;
@@ -18,6 +19,7 @@ public interface UsersRepository extends CrudRepository<User, String> {
 
     List<User> findByStatusAndTimestamp(boolean status, LocalDateTime timestamp);
 
-    void deleteByStatus(Boolean status);
+    @Modifying
+    void deleteByStatus(boolean status);
 
 }

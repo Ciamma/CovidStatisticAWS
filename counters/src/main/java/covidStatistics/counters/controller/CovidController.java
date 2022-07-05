@@ -1,8 +1,9 @@
 package covidStatistics.counters.controller;
 
 import java.net.ConnectException;
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -21,6 +22,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.server.ResponseStatusException;
+import covidStatistics.counters.model.Counter;
 import covidStatistics.counters.model.User;
 import covidStatistics.counters.service.CounterService;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("covidcounters")
 @EnableScheduling
+@Lazy(false)
 public class CovidController {
 
     // Error Handling
@@ -74,10 +77,16 @@ public class CovidController {
         return service.setGuarito(id);
     }
 
+    @GetMapping("/contatori")
+    public List<Counter> getCounters() {
+        return service.getCounter();
+    }
+
     // @Scheduled(initialDelay = 64800000, fixedRate = 86400000) // il primo delay è di 18 ore, i
     // prosimi sono di 24 ore.
-    @Scheduled(initialDelay = 20, fixedRate = 86400000)
+    @Scheduled(initialDelay = 20, fixedRate = 80000000)
     public void CounterDaily() {
+        System.out.println("qui ci arrivo");
         service.CounterDaily();
     }
 }

@@ -15,16 +15,18 @@ public class Counter {
 
     @NotNull
     @PositiveOrZero
-    Integer nMalati;
+    Integer malati;
 
     @NotNull
     @PositiveOrZero
-    Integer nGuariti;
+    Integer guariti;
+
+    public Counter() {}
 
     public Counter(LocalDate day, Integer nMalati, Integer nGuariti) {
         this.day = day;
-        this.nMalati = nMalati;
-        this.nGuariti = nGuariti;
+        this.malati = nMalati;
+        this.guariti = nGuariti;
     }
 
     public LocalDate getDay() {
@@ -32,18 +34,18 @@ public class Counter {
     }
 
     public void setNMalati(Integer n) {
-        this.nMalati = n;
+        this.malati = n;
     }
 
     public Integer getNMalati() {
-        return nMalati;
+        return malati;
     }
 
     public void setNGuariti(Integer n) {
-        this.nGuariti = n;
+        this.guariti = n;
     }
 
     public Integer getNGuariti() {
-        return nGuariti;
+        return guariti;
     }
 }

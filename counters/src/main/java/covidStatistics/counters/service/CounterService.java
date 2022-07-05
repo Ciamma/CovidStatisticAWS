@@ -4,6 +4,7 @@ package covidStatistics.counters.service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import covidStatistics.counters.model.Counter;
@@ -48,8 +49,14 @@ public class CounterService {
 
     public void CounterDaily() {
         LocalDate today = LocalDate.now();
+        System.out.println(today);
         Counter c = new Counter(today, getNmalati(), getNguariti());
+        System.out.println("counter: " + c.getNGuariti());
         Crepo.save(c);
-        deleteGuariti();
+        // deleteGuariti();
+    }
+
+    public List<Counter> getCounter() {
+        return Crepo.findAll();
     }
 }
