@@ -84,9 +84,9 @@ public class CovidController {
 
     // @Scheduled(initialDelay = 64800000, fixedRate = 86400000) // il primo delay è di 18 ore, i
     // prosimi sono di 24 ore.
-    @Scheduled(initialDelay = 20, fixedRate = 80000000)
-    public void CounterDaily() {
-        System.out.println("qui ci arrivo");
-        service.CounterDaily();
-    }
+    // @Scheduled(initialDelay = 20, fixedRate = 80000000)
+    // public void CounterDaily() {
+    //     System.out.println("qui ci arrivo");
+    //     service.CounterDaily();
+    // }
 }
