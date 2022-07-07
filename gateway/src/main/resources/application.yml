@@ -1,0 +1,58 @@
+
+# ==============================================================
+# = SPRING API GATEWAY
+# ==============================================================  
+spring:
+  application:
+    name: SpringApiGatewat
+  cloud:
+    gateway:
+      httpclient:
+      #PARAMETRI TIMEOUT
+        connect-timeout: 50000
+        response-timeout: 50s
+      enable: true
+
+# ==============================================================
+# = Route Parameters
+# ==============================================================  
+      routes:
+        #ID di identificazione
+        - id: malatiModule
+        #NOME in spring.name in properties.yml
+          uri: lb://counters
+          predicates:
+          - Path=/malato/**
+
+server:
+  port: 8765
+  tomcat:
+    threads: 
+      max: 5
+
+# ==============================================================
+# = Eureka Properties  
+# ==============================================================
+eureka:
+# ==============================================================
+# = Impostazioni Instance
+# ============================================================== 
+  instance:
+    #intervallo di attesa prima della rimozione del servizio (def 90 sec)
+    lease-expiration-duration-in-seconds: 60
+    #intervallo di invio dell'heartbeat (def 30 sec)
+    leaseRenewalIntervalInSeconds: 15
+    #id di identificazione dell'istanza
+    instanceId: ${server.port}-${spring.application.name}
+    #registrazione per indirizzo ip (defualt hostname)
+    preferIpAddress: true
+# ==============================================================
+# = Impostazioni Client
+# ============================================================== 
+    client:
+      registerWithEureka: true
+      #fetchRegistry: true
+      serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/} 
+      #time out di connessione in secondi al server Eureka (def 5 sec) 
+      eureka-server-connect-timeout-seconds: 8 

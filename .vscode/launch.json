@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch GatewayApplication",
+            "request": "launch",
+            "mainClass": "covidstatistics.gateway.GatewayApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Launch CovidEurekaApplication",
             "request": "launch",
             "mainClass": "covidstatistics.covideureka.CovidEurekaApplication",
