@@ -31,8 +31,12 @@ public class CounterService {
         return Urepo.findByStatus(false).size();
     }
 
-    public void deleteGuariti(){
-        Urepo.deleteByStatus(false);
+    public Integer getNguariti(LocalDateTime time) { // DA PROVARE
+        return Urepo.findByStatus(false).size();
+    }
+
+    public void deleteGuariti(LocalDateTime time) { // DA PROVARE
+        Urepo.deleteSchedulata(false, time);
     }
 
     public User setMalato(String id) { // funzia
@@ -47,13 +51,11 @@ public class CounterService {
         return Urepo.save(u);
     }
 
-    public void CounterDaily() {
-        LocalDate today = LocalDate.now();
-        System.out.println(today);
-        Counter c = new Counter(today, getNmalati(), getNguariti());
-        System.out.println("counter: " + c.getNGuariti());
+    public void CounterDaily() { // funzia
+        LocalDateTime today = LocalDateTime.now();
+        Counter c = new Counter(today.toLocalDate(), getNmalati(), getNguariti(today));
         Crepo.save(c);
-        // deleteGuariti();
+        deleteGuariti(today);
     }
 
     public List<Counter> getCounter() {
