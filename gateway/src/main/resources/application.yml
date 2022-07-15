@@ -4,7 +4,7 @@
 # ==============================================================  
 spring:
   application:
-    name: SpringApiGatewat
+    name: SpringApiGateway
   cloud:
     gateway:
       httpclient:
@@ -18,11 +18,11 @@ spring:
 # ==============================================================  
       routes:
         #ID di identificazione
-        - id: malatiModule
+        - id: counters
         #NOME in spring.name in properties.yml
           uri: lb://counters
           predicates:
-          - Path=/malato/**
+          - Path=/covidcounters/**
 
 server:
   port: 8765
