@@ -19,7 +19,6 @@ public class CountersApplication {
 		SpringApplication.run(CountersApplication.class, args);
 	}
 
-
 	@Bean
 	RestTemplate getRestTemplate() {
 		return new RestTemplateBuilder().setReadTimeout(Duration.ofMinutes(1)).build();
