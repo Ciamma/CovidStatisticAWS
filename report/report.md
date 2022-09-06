@@ -23,8 +23,7 @@ We provide a website where a user can see data about people infected and healed 
 
 The application relies on the use of Amazon AWS and the following services: 
    - AuroraDB
-   - secondo servizio
-   - terzo servizio
+   - other services
 ### Deviations
 ???
 
@@ -38,17 +37,40 @@ Analysing the service to be implemented, we decided to implement the following f
 [schema del servizio]
 
 ### DB
-As regards the db, we analysed the following entities: users and counters.
+As for the db, the following entities were analyzed: users and counters.
 
-In the users query all sick/healed users are recorded (with the relevant times when the operations were performed), in the counter query, on the other hand, the daily total number of sick/healed users is collected every day at 6 p.m., and to optimise the service we will delete all healed users from the users query (as the system does not benefit from keeping records of healed users after counting that they are no longer sick)
+In the users query, all users who were sick or healed are recorded, along with the times when the operations were performed. To optimize the database, the id of each user is unique, so that a user is not allowed to add himself multiple times to the sick counter. 
+In the counters query, on the other hand, the total daily number of sick and healed users is collected at 6 p.m. each day, and to optimize the service, once the counter is created, we remove all healed users from the query, as the system does not benefit from keeping records of healed users after defining that they are no longer sick. 
+Below we can see the ER schema.
 
-[er del db]
+```mermaid 
+erDiagram 
+    USER o|--|{ CUSTOMER: daily_statistic
+
+    USER{
+        string id
+        boolean status
+        timestamp action
+    }
+
+    CUSTOMER{
+        time day
+        integer nSick
+        integer nCured
+    }
+```
+
 
 ### Front
+For the front-end part we decided to use react to make a simple interface: it allows you to see the counters and through the buttons below you can notify the service if you are positive or healed. Each time the user refreshes the page, the services will be called to update the counts.  Finally at the bottom you can see the counters of the past days.
 
+[screen della pagina del sito]
 
 ### Microservices
-Concerning the microservice, we implemented the microservice with Java Spring Boot.... [scrivere qui anche lo scaling]
+As for the microservice, we implemented it with Java Spring Boot. 
+In the microservice, we have two get calls (to fetch the number of sick and healed users), two post calls(to send statistics) and a scheduled function to generate the daily counter. Thanks to the timestamp in the user query, we were able to correctly implement the function, thus fetching (and subsequently manipulating) all records that were correctly registered by 6:00 p.m. 
+
+[scrivere qui anche la parte inerente allo scaling con Kubernetes]
 
 ## Test & Validation
 We wanted to test and verify the efficiency of our application with 3 types of tests (multiple reading of data, multiple writing of data, hybrid read/write) with different amounts of requests (10k, 20k, 30k), for a grand total of 9 tests. These were the results: [foto test, magari con grafi e piccole descrizioni]
@@ -62,6 +84,4 @@ We achieve high data availability thanks to the AWS platform and the AuroraDB se
 In the end, our cloud application works well enough, scales well enough not to drop requests and demonstrates how a simple application can serve thousands of requests simply by using cloud technologies
 
 In the future, we hypothesised that we could improve it by making it a full-fledged monitoring service that can handle requests from the population of a nation or country, thus allowing us to extrapolate anonymous statistical data that will allow us in the future to fight the diseases we encounter in a more targeted manner
-
-Translated with www.DeepL.com/Translator (free version)
 
