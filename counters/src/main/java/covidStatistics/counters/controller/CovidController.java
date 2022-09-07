@@ -81,11 +81,10 @@ public class CovidController {
     public List<Counter> getCounters() {
         return service.getCounter();
     }
-
-    // @Scheduled(initialDelay = 64800000, fixedRate = 86400000) // il primo delay è di 18 ore,
-    // iprosimi sono di 24 ore.
+    /* 
+    @Scheduled(initialDelay = 64800000, fixedRate = 86400000) // il primo delay è di 18 ore,  iprosimi sono di 24 ore.
     @Scheduled(initialDelay = 20, fixedRate = 80000000)
     public void CounterDaily() {
         service.CounterDaily();
-    }
+    }*/
 }

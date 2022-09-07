@@ -20,12 +20,12 @@ public interface UsersRepository extends CrudRepository<User, String> {
     List<User> findByStatus(boolean status);
 
     @Modifying
-    @Query("select from UTENTI where status=:status or timestamp<:timestamp")
+    @Query(value="select * from UTENTI where status=:status or timestamp<:timestamp", nativeQuery=true)
     List<String> findByStatusAndTimestampLess(@Param("status") boolean status,
             @Param("timestamp") LocalDateTime timestamp);
 
     @Modifying
-    @Query("delete from UTENTI f where f.status=:status or f.timestamp<:timestamp")
+    @Query(value="delete from UTENTI f where f.status=:status or f.timestamp<:timestamp", nativeQuery=true)
     List<String> deleteSchedulata(@Param("status") boolean status,
             @Param("timestamp") LocalDateTime timestamp);
 }
