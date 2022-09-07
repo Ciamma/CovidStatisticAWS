@@ -11,7 +11,9 @@ spring:
       #PARAMETRI TIMEOUT
         connect-timeout: 50000
         response-timeout: 50s
-      enable: true
+        enable: true
+      
+
 
 # ==============================================================
 # = Route Parameters

@@ -1,3 +1,5 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
 //import logo from "./logo.svg";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useState, useEffect } from "react";
@@ -9,12 +11,12 @@ function App() {
 
   useEffect(() => {
     // decommentali per vedere se funzionano i link
-    // fetch("localhost:8765/getMalati")
-    //   .then((response) => response.json())
-    //   .then((data) => this.setSick(data));
-    // fetch("localhost:8765/getGuariti")
-    //   .then((response) => response.json())
-    //   .then((data) => this.setSick(data));
+     fetch("http://localhost:8765/covidcounters/nMalati")
+       .then((response) => response.json())
+       .then((data) => setSick(data));
+     fetch("http://localhost:8765/covidcounters/nGuariti")
+       .then((response) => response.json())
+       .then((data) => setCure(data));
   });
 
   const title = (
