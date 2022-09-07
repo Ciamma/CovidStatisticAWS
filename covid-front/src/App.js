@@ -96,6 +96,18 @@ function App() {
       {button_healed}
     </Row>
   );
+  
+  const past_days = (
+    <Row>
+      <table>
+        <tr>
+          <td>13/09/2023</td>
+          <td>24</td>
+          <td>36</td>
+        </tr>
+      </table>
+    </Row>
+  );
 
   return (
     <div className="App">
@@ -104,6 +116,8 @@ function App() {
           {title}
           {counters}
           {buttons}
+          Giorni passati
+          {past_days}
         </header>
       </Container>
     </div>
