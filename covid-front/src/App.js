@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+//import ReactDOM from 'react-dom'
 //import logo from "./logo.svg";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useState, useEffect } from "react";
@@ -45,6 +45,18 @@ function App() {
       {counter_negatives}
     </div>
   );
+  
+  const idRandom = () => {
+    var result = "";
+    var characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < 10; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  };
+  
 
   const button_injured = (
     <Button
@@ -52,13 +64,10 @@ function App() {
       size="lg"
       style={{ marginRight: "20px" }}
       onClick={() => {
-        setSick(sick + 1);
-         let request = {
-           method: "POST",
-           headers: { "Content-Type": "application/json" },
-           body: JSON.stringify({ id: "00001" }),
-         };
-         fetch("http://localhost:8765/covidcounters/malato/sick", request);
+        //setSick(sick + 1);
+        const id = idRandom();
+        //console.log("http://localhost:8765/covidcounters/malato/" + id);
+        fetch("http://localhost:8765/covidcounters/malato/" + id);
       }}
     >
       Sono positivo
@@ -71,13 +80,10 @@ function App() {
       size="lg"
       style={{ marginLeft: "20px" }}
       onClick={() => {
-        setCure(cure + 1);
-         let request = {
-           method: "POST",
-           headers: { "Content-Type": "application/json" },
-           body: JSON.stringify({ id: "00001" }),
-         };
-         fetch("http://localhost:8765/covidcounters/guarito/cure", request);
+        //setCure(cure + 1);
+        const id = idRandom();
+        //console.log("http://localhost:8765/covidcounters/malato/" + id);
+        fetch("http://localhost:8765/covidcounters/guarito/" + id);
       }}
     >
       Sono guarito
