@@ -53,12 +53,12 @@ function App() {
       style={{ marginRight: "20px" }}
       onClick={() => {
         setSick(sick + 1);
-        // let request = {
-        //   method: "POST",
-        //   headers: { "Content-Type": "application/json" },
-        //   body: JSON.stringify({ id: "00001" }),
-        // };
-        // fetch("localhost:8765/malato/", request);
+         let request = {
+           method: "POST",
+           headers: { "Content-Type": "application/json" },
+           body: JSON.stringify({ id: "00001" }),
+         };
+         fetch("http://localhost:8765/covidcounters/malato/sick", request);
       }}
     >
       Sono positivo
@@ -72,12 +72,12 @@ function App() {
       style={{ marginLeft: "20px" }}
       onClick={() => {
         setCure(cure + 1);
-        // let request = {
-        //   method: "POST",
-        //   headers: { "Content-Type": "application/json" },
-        //   body: JSON.stringify({ id: "00001" }),
-        // };
-        // fetch("localhost:8765/guarito/", request);
+         let request = {
+           method: "POST",
+           headers: { "Content-Type": "application/json" },
+           body: JSON.stringify({ id: "00001" }),
+         };
+         fetch("http://localhost:8765/covidcounters/guarito/cure", request);
       }}
     >
       Sono guarito
