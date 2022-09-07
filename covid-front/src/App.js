@@ -66,8 +66,11 @@ function App() {
       onClick={() => {
         //setSick(sick + 1);
         const id = idRandom();
+        let request = {
+          method: "POST",
+        };
         //console.log("http://localhost:8765/covidcounters/malato/" + id);
-        fetch("http://localhost:8765/covidcounters/malato/" + id);
+        fetch("http://localhost:8765/covidcounters/malato/" + id, request);
       }}
     >
       Sono positivo
@@ -82,8 +85,11 @@ function App() {
       onClick={() => {
         //setCure(cure + 1);
         const id = idRandom();
+        let request = {
+          method: "POST",
+        };
         //console.log("http://localhost:8765/covidcounters/malato/" + id);
-        fetch("http://localhost:8765/covidcounters/guarito/" + id);
+        fetch("http://localhost:8765/covidcounters/guarito/" + id, request);
       }}
     >
       Sono guarito
