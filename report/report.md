@@ -62,7 +62,7 @@ erDiagram
 
 
 ### Front
-For the front-end part we decided to use react to make a simple interface: it allows you to see the counters and through the buttons below you can notify the service if you are positive or healed. Each time the user refreshes the page, the services will be called to update the counts.  Finally at the bottom you can see the counters of the past days.
+For the front-end part we decided to use react to make a simple interface: it allows you to see the counters and through the buttons below you can notify the service if you are positive or healed; to simplify input operations, the call that starts from the buttons contains only a random id. Each time the user refreshes the page, the services will be called to update the counts. Finally at the bottom you can see the counters of the past days.
 
 [screen della pagina del sito]
 
