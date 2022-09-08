@@ -12,12 +12,12 @@ function App() {
 
   useEffect(() => {
     // decommentali per vedere se funzionano i link
-    // fetch("http://localhost:8765/covidcounters/nMalati")
-    //   .then((response) => response.json())
-    //   .then((data) => setSick(data));
-    // fetch("http://localhost:8765/covidcounters/nGuariti")
-    //   .then((response) => response.json())
-    //   .then((data) => setCure(data));
+    fetch("http://localhost:8765/covidcounters/nMalati")
+      .then((response) => response.json())
+      .then((data) => setSick(data));
+    fetch("http://localhost:8765/covidcounters/nGuariti")
+      .then((response) => response.json())
+      .then((data) => setCure(data));
   });
 
   const title = (
