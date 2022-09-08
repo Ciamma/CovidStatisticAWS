@@ -8,15 +8,16 @@ import "./App.css";
 function App() {
   const [sick, setSick] = useState(5);
   const [cure, setCure] = useState(10);
+  const [id, setId] = useState("");
 
   useEffect(() => {
     // decommentali per vedere se funzionano i link
-     fetch("http://localhost:8765/covidcounters/nMalati")
-       .then((response) => response.json())
-       .then((data) => setSick(data));
-     fetch("http://localhost:8765/covidcounters/nGuariti")
-       .then((response) => response.json())
-       .then((data) => setCure(data));
+    // fetch("http://localhost:8765/covidcounters/nMalati")
+    //   .then((response) => response.json())
+    //   .then((data) => setSick(data));
+    // fetch("http://localhost:8765/covidcounters/nGuariti")
+    //   .then((response) => response.json())
+    //   .then((data) => setCure(data));
   });
 
   const title = (
@@ -32,6 +33,10 @@ function App() {
     </Col>
   );
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   const counter_negatives = (
     <Col style={{ marginLeft: "50px" }}>
       <h1>{cure}</h1>
@@ -45,18 +50,21 @@ function App() {
       {counter_negatives}
     </div>
   );
-  
-  const idRandom = () => {
+
+  function idRandom() {
+    if (id !== "") {
+      return id;
+    }
     var result = "";
     var characters =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    var charactersLength = characters.length;
     for (var i = 0; i < 10; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      result += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
     }
-    return result;
-  };
-  
+    setId(result);
+  }
 
   const button_injured = (
     <Button
@@ -65,12 +73,13 @@ function App() {
       style={{ marginRight: "20px" }}
       onClick={() => {
         //setSick(sick + 1);
-        const id = idRandom();
+        idRandom();
         let request = {
           method: "POST",
         };
-        //console.log("http://localhost:8765/covidcounters/malato/" + id);
+        console.log("http://localhost:8765/covidcounters/malato/" + id);
         fetch("http://localhost:8765/covidcounters/malato/" + id, request);
+        //refreshPage();
       }}
     >
       Sono positivo
@@ -84,12 +93,13 @@ function App() {
       style={{ marginLeft: "20px" }}
       onClick={() => {
         //setCure(cure + 1);
-        const id = idRandom();
+        idRandom();
         let request = {
           method: "POST",
         };
-        //console.log("http://localhost:8765/covidcounters/malato/" + id);
+        console.log("http://localhost:8765/covidcounters/guarito/" + id);
         fetch("http://localhost:8765/covidcounters/guarito/" + id, request);
+        //refreshPage();
       }}
     >
       Sono guarito

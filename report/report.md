@@ -83,5 +83,5 @@ In addition, thanks to Kubernetes and scaling policies, we gained benefits such 
 We achieve high data availability thanks to the AWS platform and the AuroraDB service that hosts our database in the cloud.
 In the end, our cloud application works well enough, scales well enough not to drop requests and demonstrates how a simple application can serve thousands of requests simply by using cloud technologies
 
-In the future, we hypothesised that we could improve it by making it a full-fledged monitoring service that can handle requests from the population of a nation or country, thus allowing us to extrapolate anonymous statistical data that will allow us in the future to fight the diseases we encounter in a more targeted manner
+In the future, we hypothesized that we could improve it by making it a true monitoring service that can handle requests from the population of a nation or country, improving performance based on the requests that will be made and implementing a better interface, thus allowing us to extrapolate anonymous statistical data that will allow us in the future to combat the diseases we encounter in a more targeted way.
 
