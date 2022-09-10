@@ -12,10 +12,14 @@ function App() {
 
   useEffect(() => {
     // decommentali per vedere se funzionano i link
-    fetch("http://localhost:8765/covidcounters/nMalati")
+    fetch(
+      "http://sviluppocovid.us-east-1.elasticbeanstalk.com/covidcounters/nMalati"
+    )
       .then((response) => response.json())
       .then((data) => setSick(data));
-    fetch("http://localhost:8765/covidcounters/nGuariti")
+    fetch(
+      "http://sviluppocovid.us-east-1.elasticbeanstalk.com/covidcounters/nGuariti"
+    )
       .then((response) => response.json())
       .then((data) => setCure(data));
   });
@@ -77,8 +81,12 @@ function App() {
         let request = {
           method: "POST",
         };
-        console.log("http://localhost:8765/covidcounters/malato/" + id);
-        fetch("http://localhost:8765/covidcounters/malato/" + id, request);
+        //console.log("http://sviluppocovid.us-east-1.elasticbeanstalk.com/covidcounters/malato/" +id);
+        fetch(
+          "http://sviluppocovid.us-east-1.elasticbeanstalk.com/covidcounters/malato/" +
+            id,
+          request
+        );
         //refreshPage();
       }}
     >
@@ -97,8 +105,12 @@ function App() {
         let request = {
           method: "POST",
         };
-        console.log("http://localhost:8765/covidcounters/guarito/" + id);
-        fetch("http://localhost:8765/covidcounters/guarito/" + id, request);
+        //console.log("http://localhost:8765/covidcounters/guarito/" + id);
+        fetch(
+          "http://sviluppocovid.us-east-1.elasticbeanstalk.com/covidcounters/guarito/" +
+            id,
+          request
+        );
         //refreshPage();
       }}
     >
