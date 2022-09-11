@@ -11,7 +11,6 @@ function App() {
   const [id, setId] = useState("");
 
   useEffect(() => {
-    // decommentali per vedere se funzionano i link
     fetch(
       "http://sviluppocovid.us-east-1.elasticbeanstalk.com/covidcounters/nMalati"
     )
@@ -75,19 +74,16 @@ function App() {
       variant="danger"
       size="lg"
       style={{ marginRight: "20px" }}
-      onClick={() => {
-        //setSick(sick + 1);
+      onClick={async () => {
         idRandom();
         let request = {
           method: "POST",
         };
-        //console.log("http://sviluppocovid.us-east-1.elasticbeanstalk.com/covidcounters/malato/" +id);
-        fetch(
+        await fetch(
           "http://sviluppocovid.us-east-1.elasticbeanstalk.com/covidcounters/malato/" +
             id,
           request
-        );
-        //refreshPage();
+        ).then(refreshPage());
       }}
     >
       Sono positivo
@@ -100,18 +96,16 @@ function App() {
       size="lg"
       style={{ marginLeft: "20px" }}
       onClick={() => {
-        //setCure(cure + 1);
         idRandom();
         let request = {
           method: "POST",
         };
-        //console.log("http://localhost:8765/covidcounters/guarito/" + id);
         fetch(
           "http://sviluppocovid.us-east-1.elasticbeanstalk.com/covidcounters/guarito/" +
             id,
           request
         );
-        //refreshPage();
+        refreshPage();
       }}
     >
       Sono guarito
@@ -124,15 +118,17 @@ function App() {
       {button_healed}
     </Row>
   );
-  
+
   const past_days = (
     <Row>
       <table>
-        <tr>
-          <td>13/09/2023</td>
-          <td>24</td>
-          <td>36</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>13/09/2023</td>
+            <td>24</td>
+            <td>36</td>
+          </tr>
+        </tbody>
       </table>
     </Row>
   );
