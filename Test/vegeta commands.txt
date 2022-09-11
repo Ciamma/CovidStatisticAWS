@@ -1,0 +1,12 @@
+vegeta attack -duration=5s -rate=5 -targets=target.list |  vegeta report --type=text    | vegeta plot --title="HTTP GET calls" > test_read_04.html
+
+echo "POST http://sviluppocovid.us-east-1.elasticbeanstalk.com/covidcounters/malato/00000000234" | vegeta attack -duration=5s -rate=5 | vegeta report --type=text
+
+-output=results-veg-httpbin-get.bin && cat results-veg-httpbin-get.bin 
+vegeta attack -duration=5s -rate=5 
+
+
+
+cd && echo "GET http://sviluppocovid.us-east-1.elasticbeanstalk.com/covidcounters/nMalati" | vegeta attack -duration=30s -rate=10 |  vegeta report --type=text 
+
+cd && echo "GET http://sviluppocovid.us-east-1.elasticbeanstalk.com/covidcounters/nMalati" | vegeta attack -duration=10s -rate=100 | vegeta report --type=text
